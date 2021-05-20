@@ -2,11 +2,11 @@
 
 #include "mbed.h"
 
-class TLC59108{
+class TLC59116{
     public:
     
-    TLC59108(I2C* i2c, int address);
-    TLC59108(PinName sda, PinName scl, int address);
+    TLC59116(I2C* i2c, int address);
+    TLC59116(PinName sda, PinName scl, int address);
     
     void setBrightness(float brightness);
     void setChannel(int channel, float brightness);
@@ -19,7 +19,7 @@ class TLC59108{
     
     void initialize();
     
-    void setOutputState(int ledout0, int ledout1);
+    void setOutputState(int ledout0, int ledout1, int ledout2, int ledout3);
     
     private:
     void setRegister(int reg, int value);
@@ -31,6 +31,6 @@ class TLC59108{
     static const int AUTO_INCREMENT_BRIGHTNESS_CONTROL = 0xE0;
     static const int NO_AUTO_INCREMENT = 0x00;
     
-    static const int GRPPWM = 0x0A;
-    static const int LEDOUT0 = 0x0C;
+    static const int GRPPWM = 0x12;
+    static const int LEDOUT0 = 0x014;
 };
